@@ -85,11 +85,17 @@ const displayPhoneDetail = phone => {
             <small class="text-info">${phone.releaseDate}</small>
             <p class="card-text fw-bold">Brand name: ${phone.brand}</p>
             <p class="text-warning fs-4"> More Details </p>
-            <p class="text-success"> Chipset: ${phone.mainFeatures.chipset} </p>
+            <p class="text-success"> Chipset: ${phone.mainFeatures.chipSet} </p>
             <p class="text-success"> Memory: ${phone.mainFeatures.memory} </p>
             <p class="text-success"> Display Size: ${phone.mainFeatures.displaySize} </p>
             <p class="text-success"> Storage: ${phone.mainFeatures.storage} </p>
-            <button  id="more-detail" class="btn btn-primary">Main Features</button>
+            <p class="text-success"> USB: ${phone.others.USB} </p>
+            <p class="text-warning fs-4"> Others Details: </p>
+            <p class="text-success"> Blutooth: ${displayOthers.Bluetooth} </p>
+            <p class="text-success"> GPS: ${displayOthers.GPS} </p>
+            <p class="text-success"> USB: ${displayOthers.USB} </p>
+            <p class="text-success"> WLAN: ${displayOthers.WLAN} </p>
+            <button onclick="loadOthersInfo('${phone.others}')"  id="more-detail" class="btn btn-primary">Main Features</button>
         </div>
     `;
 
@@ -110,17 +116,49 @@ const displayPhoneDetail = phone => {
             <small> No Release Date Found </small>
             <p class="card-text fw-bold">Brand name: ${phone.brand}</p>
             <p class="text-warning fs-4"> More Details </p>
-            <p class="text-success"> Chipset: ${phone.mainFeatures.chipset} </p>
+            <p class="text-success"> Chipset: ${phone.mainFeatures.chipSet} </p>
             <p class="text-success"> Memory: ${phone.mainFeatures.memory} </p>
             <p class="text-success"> Display Size: ${phone.mainFeatures.displaySize} </p>
             <p class="text-success"> Storage: ${phone.mainFeatures.storage} </p>
-            <button id="more-detail" class="btn btn-primary">Main Features</button>
+            <p class="text-warning fs-4"> Others Details: </p>
+            <p class="text-success"> Blutooth: ${displayOthers.Bluetooth} </p>
+            <p class="text-success"> GPS: ${displayOthers.GPS} </p>
+            <p class="text-success"> USB: ${displayOthers.USB} </p>
+            <p class="text-success"> WLAN: ${displayOthers.WLAN} </p>
+            <button onclick="loadOthersInfo('${phone.others}')" id="more-detail" class="btn btn-primary">Main Features</button>
         </div>
     `;
 
     PhoneDetails.appendChild(div);
     }
-    
+
+}
+
+//here I have tried to show other info using a button but I failed but I try my best with my little knowledge
+const loadOthersInfo = loadOthers => {
+    const url = `https://openapi.programming-hero.com/api/phone/${loadOthers}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayOtherInfo(data));
+}
+
+
+const displayOtherInfo = displayOthers => {
+    console.log(displayOthers);
+    const NewOtherDetails = document.getElementById('phone-details');
+    const div = document.createElement('div')
+        div.classList.add('card');
+        div.innerHTML = `
+        <div class="card-body mx-auto">
+            <p class="text-warning fs-4"> Others Details: </p>
+            <p class="text-success"> Blutooth: ${displayOthers.Bluetooth} </p>
+            <p class="text-success"> GPS: ${displayOthers.GPS} </p>
+            <p class="text-success"> USB: ${displayOthers.USB} </p>
+            <p class="text-success"> WLAN: ${displayOthers.WLAN} </p>
+        </div>
+        `;
+
+        NewOtherDetails.appendChild(div);
 }
 
 
