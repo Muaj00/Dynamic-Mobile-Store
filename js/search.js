@@ -28,6 +28,8 @@ const searchPhone = () => {
    }
 }
 
+
+
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
@@ -50,12 +52,16 @@ const displaySearchResult = data => {
     });
 }
 
-const loadPhoneDetail = phoneId => {
+const loadPhoneDetail =async phoneId => {
     // console.log(phoneId);
     const url= `https://openapi.programming-hero.com/api/phone/${phoneId}`;
-    fetch(url)
-    .then(res => res.json())
-    .then(data => displayPhoneDetail(data.data));
+
+    const res = await fetch(url);
+    const data = await res.json();
+    displayPhoneDetail(data.data);
+    // fetch(url)
+    // .then(res => res.json())
+    // .then(data => displayPhoneDetail(data.data));
 }
 
 const displayPhoneDetail = phone => {
@@ -68,16 +74,22 @@ const displayPhoneDetail = phone => {
     if(phone.releaseDate)
     {
         const div = document.createElement('div')
-    div.classList.add('card');
-    div.innerHTML = `
+        div.classList.add('card');
+        div.innerHTML = `
         <div class="w-50 mx-auto"> 
-            <img src="${phone.image}" class="card-img-top " alt="...">
-            <small class="ms-3">${phone.releaseDate}</small>
+            <img src="${phone.image}" class="card-img-top mt-3" alt="...">
+            
         </div>
         <div class="card-body mx-auto">
             <h5 class="card-title">${phone.name}</h5>
+            <small class="text-info">${phone.releaseDate}</small>
             <p class="card-text fw-bold">Brand name: ${phone.brand}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <p class="text-warning fs-4"> More Details </p>
+            <p class="text-success"> Chipset: ${phone.mainFeatures.chipset} </p>
+            <p class="text-success"> Memory: ${phone.mainFeatures.memory} </p>
+            <p class="text-success"> Display Size: ${phone.mainFeatures.displaySize} </p>
+            <p class="text-success"> Storage: ${phone.mainFeatures.storage} </p>
+            <button  id="more-detail" class="btn btn-primary">Main Features</button>
         </div>
     `;
 
@@ -87,16 +99,22 @@ const displayPhoneDetail = phone => {
     else 
     {
         const div = document.createElement('div')
-    div.classList.add('card');
-    div.innerHTML = `
+        div.classList.add('card');
+        div.innerHTML = `
         <div class="w-50 mx-auto">
              <img src="${phone.image}" class="card-img-top " alt="..."> 
-             <small> No Release Date Found </small>
+             
         </div>
         <div class="card-body mx-auto">
             <h5 class="card-title">${phone.name}</h5>
+            <small> No Release Date Found </small>
             <p class="card-text fw-bold">Brand name: ${phone.brand}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <p class="text-warning fs-4"> More Details </p>
+            <p class="text-success"> Chipset: ${phone.mainFeatures.chipset} </p>
+            <p class="text-success"> Memory: ${phone.mainFeatures.memory} </p>
+            <p class="text-success"> Display Size: ${phone.mainFeatures.displaySize} </p>
+            <p class="text-success"> Storage: ${phone.mainFeatures.storage} </p>
+            <button id="more-detail" class="btn btn-primary">Main Features</button>
         </div>
     `;
 
@@ -104,4 +122,7 @@ const displayPhoneDetail = phone => {
     }
     
 }
+
+
+
     
