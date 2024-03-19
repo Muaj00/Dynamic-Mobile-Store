@@ -12,7 +12,7 @@ const searchPhone = () => {
         const div = document.createElement('div');
         div.classList.add('no-search');
         div.innerHTML = `
-            <p class = "text-primary fs-1 mt-5 text-center"> Please type in the search box and reload the site </p>
+            <p class = "text-primary fs-1 mt-5 text-center"> Please reload the site and type in the search box </p>
         `;
         noSearchResult.appendChild(div); 
           
@@ -89,12 +89,12 @@ const displayPhoneDetail = phone => {
             <p class="text-success"> Memory: ${phone.mainFeatures.memory} </p>
             <p class="text-success"> Display Size: ${phone.mainFeatures.displaySize} </p>
             <p class="text-success"> Storage: ${phone.mainFeatures.storage} </p>
-            <p class="text-success"> USB: ${phone.others.USB} </p>
+        
             <p class="text-warning fs-4"> Others Details: </p>
-            <p class="text-success"> Blutooth: ${displayOthers.Bluetooth} </p>
-            <p class="text-success"> GPS: ${displayOthers.GPS} </p>
-            <p class="text-success"> USB: ${displayOthers.USB} </p>
-            <p class="text-success"> WLAN: ${displayOthers.WLAN} </p>
+            <p class="text-success"> Blutooth: ${phone.others.Bluetooth} </p>
+            <p class="text-success"> GPS: ${phone.others.GPS} </p>
+            <p class="text-success"> USB: ${phone.others.USB} </p>
+            <p class="text-success"> WLAN: ${phone.others.WLAN} </p>
             <button onclick="loadOthersInfo('${phone.others}')"  id="more-detail" class="btn btn-primary">Main Features</button>
         </div>
     `;
@@ -121,10 +121,10 @@ const displayPhoneDetail = phone => {
             <p class="text-success"> Display Size: ${phone.mainFeatures.displaySize} </p>
             <p class="text-success"> Storage: ${phone.mainFeatures.storage} </p>
             <p class="text-warning fs-4"> Others Details: </p>
-            <p class="text-success"> Blutooth: ${displayOthers.Bluetooth} </p>
-            <p class="text-success"> GPS: ${displayOthers.GPS} </p>
-            <p class="text-success"> USB: ${displayOthers.USB} </p>
-            <p class="text-success"> WLAN: ${displayOthers.WLAN} </p>
+            <p class="text-success"> Blutooth: ${phone.others.Bluetooth} </p>
+            <p class="text-success"> GPS: ${phone.others.GPS} </p>
+            <p class="text-success"> USB: ${phone.others.USB} </p>
+            <p class="text-success"> WLAN: ${phone.others.WLAN} </p>
             <button onclick="loadOthersInfo('${phone.others}')" id="more-detail" class="btn btn-primary">Main Features</button>
         </div>
     `;
