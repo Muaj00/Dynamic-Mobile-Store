@@ -8,7 +8,6 @@ const searchPhone = () => {
     if(searchText == '')
     {
         const noSearchResult = document.getElementById('no-search-result');
-        // noSearchResult.innerHTML = '';
         const div = document.createElement('div');
         div.classList.add('no-search');
         div.innerHTML = `
@@ -28,7 +27,7 @@ const searchPhone = () => {
    }
 }
 
-
+// Display the Search Result
 
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
@@ -52,6 +51,7 @@ const displaySearchResult = data => {
     });
 }
 
+// load the phone details
 const loadPhoneDetail =async phoneId => {
     // console.log(phoneId);
     const url= `https://openapi.programming-hero.com/api/phone/${phoneId}`;
@@ -59,16 +59,14 @@ const loadPhoneDetail =async phoneId => {
     const res = await fetch(url);
     const data = await res.json();
     displayPhoneDetail(data.data);
-    // fetch(url)
-    // .then(res => res.json())
-    // .then(data => displayPhoneDetail(data.data));
+   
 }
 
+//display the phone details
 const displayPhoneDetail = phone => {
     console.log(phone);
     const PhoneDetails = document.getElementById('phone-details');
     PhoneDetails.textContent = '';
-    // const releaseDate = phone.releaseDate;
     // console.log(releaseDate);
 
     if(phone.releaseDate)
@@ -131,7 +129,7 @@ const displayPhoneDetail = phone => {
 
     PhoneDetails.appendChild(div);
     }
-
+    
 }
 
 //here I have tried to show other info using a button but I failed but I try my best with my little knowledge
