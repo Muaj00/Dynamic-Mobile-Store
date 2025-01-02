@@ -39,7 +39,7 @@ const displaySearchResult = data => {
         div.classList.add('col');
         div.innerHTML = `
         <div class="card ">
-            <img src="${phones.image}" class="card-img-top w-50 p-3 mx-auto" alt="...">
+            <img src="${phones.image}" class="card-img-top w-[200px] p-3 mx-auto" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${phones.phone_name}</h5>
                 <p class="card-text fw-bold">Brand name: ${phones.brand}</p>

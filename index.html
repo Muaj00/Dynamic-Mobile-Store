@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mobil Phone Center</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 
@@ -16,7 +17,7 @@
     <!-- search box  -->
 
     <div class="input-group mb-4 w-50 mx-auto">
-        <input id="search-field" type="text" class="form-control" placeholder="Search your favorite phone by name" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <input id="search-field" type="text" class="form-control" placeholder="Search your favorite phone by name EX: Oppo, samsung, Nokia, iphone" aria-label="Recipient's username" aria-describedby="button-addon2">
         <button onclick="searchPhone()" class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
     </div>
 
@@ -34,8 +35,8 @@
     
     <!-- grid card result -->
 
-    <section class="w-75 mx-auto mb-5">
-        <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 col-sm-1">
+    <section class="w-75 mx-auto mb-5 ">
+        <div id="search-result" class="grid grid-cols-3 gap-4">
         
         </div>
     </section>
